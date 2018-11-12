@@ -24,20 +24,25 @@ RUN git clone https://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh \
     && cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc \
     && chsh -s /bin/zsh
 
-# Install miniconda
+## Install miniconda
+#RUN wget https://mirrors.tuna.tsinghua.edu.cn/anaconda/miniconda/Miniconda2-latest-Linux-x86_64.sh \
+#    && bash Miniconda2-latest-Linux-x86_64.sh -b \
+#    && rm Miniconda2-latest-Linux-x86_64.sh
+#
+## Config python path
+#ENV PATH /root/miniconda2/bin:$PATH
+#
+## https://mirror.tuna.tsinghua.edu.cn/help/anaconda/
+## Install Data Science packages
+#RUN conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/ \
+#    && conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main/ \
+#    && conda config --set show_channel_urls yes \
+#    && conda install -y numpy scipy pandas matplotlib scikit-learn
+
+# Install anaconda
 RUN wget https://mirrors.tuna.tsinghua.edu.cn/anaconda/miniconda/Miniconda2-latest-Linux-x86_64.sh \
     && bash Miniconda2-latest-Linux-x86_64.sh -b \
     && rm Miniconda2-latest-Linux-x86_64.sh
-
-# Config python path
-ENV PATH /root/miniconda2/bin:$PATH
-
-# https://mirror.tuna.tsinghua.edu.cn/help/anaconda/
-# Install Data Science packages
-RUN conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/ \
-    && conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main/ \
-    && conda config --set show_channel_urls yes \
-    && conda install -y numpy scipy pandas matplotlib scikit-learn
 
 # Config pip
 # Install xgboost
