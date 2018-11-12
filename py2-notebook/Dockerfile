@@ -40,18 +40,18 @@ RUN git clone https://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh \
 #    && conda install -y numpy scipy pandas matplotlib scikit-learn
 
 # Install anaconda
-RUN wget https://mirrors.tuna.tsinghua.edu.cn/anaconda/miniconda/Miniconda2-latest-Linux-x86_64.sh \
-    && bash Miniconda2-latest-Linux-x86_64.sh -b \
-    && rm Miniconda2-latest-Linux-x86_64.sh
+RUN wget https://mirrors.tuna.tsinghua.edu.cn/anaconda/archive/Anaconda2-5.3.0-Linux-x86_64.sh \
+    && bash Anaconda2-5.3.0-Linux-x86_64.sh -b \
+    && rm Anaconda2-5.3.0-Linux-x86_64.sh
+
+# Config python path
+ENV PATH /root/anaconda2/bin:$PATH
 
 # Config pip
-# Install xgboost
+# Install xgboost (from tuna mirror)
 RUN pip install pip -U \
     && pip install -i https://pypi.tuna.tsinghua.edu.cn/simple xgboost \
     && pip install -i https://pypi.tuna.tsinghua.edu.cn/simple lightgbm
-
-# Notebook
-RUN conda install -y jupyter
 
 # Config access to Jupyter
 # passwd: macbook1234
