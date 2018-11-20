@@ -25,12 +25,12 @@ RUN git clone https://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh \
     && chsh -s /bin/zsh
 
 # Install anaconda
-RUN wget https://mirrors.tuna.tsinghua.edu.cn/anaconda/archive/Anaconda2-5.3.0-Linux-x86_64.sh \
-    && bash Anaconda2-5.3.0-Linux-x86_64.sh -b \
-    && rm Anaconda2-5.3.0-Linux-x86_64.sh
+RUN wget https://mirrors.tuna.tsinghua.edu.cn/anaconda/archive/Anaconda3-5.3.1-Linux-x86_64.sh \
+    && bash Anaconda3-5.3.1-Linux-x86_64.sh -b \
+    && rm Anaconda3-5.3.1-Linux-x86_64.sh
 
 # Config python path
-ENV PATH /root/anaconda2/bin:$PATH
+ENV PATH /root/anaconda3/bin:$PATH
 
 # Config pip
 # Install xgboost (from tuna mirror)
